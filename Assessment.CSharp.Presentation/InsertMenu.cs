@@ -1,3 +1,4 @@
+using Assessment.CSharp.Domain;
 using Assessment.CSharp.Presentation.Interfaces;
 using Assessment.CSharp.Repository;
 
@@ -13,6 +14,15 @@ public class InsertMenu : IMenu
     }
     public void ShowMenu()
     {
-        throw new NotImplementedException();
+        var paint = new Paint();
+        Console.WriteLine("+++ Cadastro de Pintura +++");
+        
+        paint.RegisName();
+        paint.RegisId();
+        paint.RegisPrice();
+        paint.RegisCreationDate();
+        paint.RegisOnSale();
+
+        _repository.Creat(paint);
     }
 }

@@ -4,12 +4,12 @@ namespace Assessment.CSharp.Repository;
 
 public class FileRepository : IRepository
 {
-    public void Creat(int x)
+    public void Creat(Paint paint)
     {
-        Console.WriteLine($"Salvo em arquivo {x}");
+        Console.WriteLine($"Salvo em arquivo {paint}");
     }
 
-    public int Read()
+    public Paint Read(string name)
     {
         throw new NotImplementedException();
     }
@@ -19,12 +19,17 @@ public class FileRepository : IRepository
         return new List<Paint>();
     }
 
-    public int Update()
+    public List<Paint> ReadAllByName(string name)
     {
         throw new NotImplementedException();
     }
 
-    public void Delete()
+    public void Update(string newName, string newId, string newPrice, string newSale, string newCreationDate)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Delete(string name)
     {
         throw new NotImplementedException();
     }
