@@ -24,7 +24,7 @@ public class FileRepository : IRepository
         throw new NotImplementedException();
     }
 
-    public void Update(string newName, string newId, string newPrice, string newSale, string newCreationDate)
+    public void Update(string oldName, string newName, string newId, string newPrice, string newSale, string newCreationDate)
     {
         throw new NotImplementedException();
     }

@@ -33,6 +33,6 @@ public class UpdateMenu : IMenu
         string newPrice = Console.ReadLine();
         string newSale = Console.ReadLine();
         string newCreationDate = Console.ReadLine();
-        _repository.Update(newName, newId, newPrice, newSale, newCreationDate);
+        _repository.Update(name, newName, newId, newPrice, newSale, newCreationDate);
     }
 }
