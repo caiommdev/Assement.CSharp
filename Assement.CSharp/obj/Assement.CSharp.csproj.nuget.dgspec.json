@@ -1,0 +1,235 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assement.CSharp/Assement.CSharp.csproj": {}
+  },
+  "projects": {
+    "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assement.CSharp/Assement.CSharp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assement.CSharp/Assement.CSharp.csproj",
+        "projectName": "Assement.CSharp",
+        "projectPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assement.CSharp/Assement.CSharp.csproj",
+        "packagesPath": "/Users/caiomotamarinho/.nuget/packages/",
+        "outputPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assement.CSharp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/caiomotamarinho/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Presentation/Assessment.CSharp.Presentation.csproj": {
+                "projectPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Presentation/Assessment.CSharp.Presentation.csproj"
+              },
+              "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/Assessment.CSharp.Repository.csproj": {
+                "projectPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/Assessment.CSharp.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.413/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Domain/Assessment.CSharp.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Domain/Assessment.CSharp.Domain.csproj",
+        "projectName": "Assessment.CSharp.Domain",
+        "projectPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Domain/Assessment.CSharp.Domain.csproj",
+        "packagesPath": "/Users/caiomotamarinho/.nuget/packages/",
+        "outputPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/caiomotamarinho/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.413/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Presentation/Assessment.CSharp.Presentation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Presentation/Assessment.CSharp.Presentation.csproj",
+        "projectName": "Assessment.CSharp.Presentation",
+        "projectPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Presentation/Assessment.CSharp.Presentation.csproj",
+        "packagesPath": "/Users/caiomotamarinho/.nuget/packages/",
+        "outputPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Presentation/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/caiomotamarinho/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/Assessment.CSharp.Repository.csproj": {
+                "projectPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/Assessment.CSharp.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.413/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/Assessment.CSharp.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/Assessment.CSharp.Repository.csproj",
+        "projectName": "Assessment.CSharp.Repository",
+        "projectPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/Assessment.CSharp.Repository.csproj",
+        "packagesPath": "/Users/caiomotamarinho/.nuget/packages/",
+        "outputPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/caiomotamarinho/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Domain/Assessment.CSharp.Domain.csproj": {
+                "projectPath": "/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Domain/Assessment.CSharp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.413/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
