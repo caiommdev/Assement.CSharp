@@ -5,15 +5,15 @@ namespace Assessment.CSharp.Repository;
 
 public class ListRepository : IRepository
 {
-    private List<Paint> allPaints = new List<Paint>();
+    private List<Paint> _allPaints = new List<Paint>();
     public void Creat(Paint paint)
     {
-        allPaints.Add(paint);
+        _allPaints.Add(paint);
     }
 
     public Paint Read(string name)
     {
-        foreach (var paint in allPaints)
+        foreach (var paint in _allPaints)
         {
             if (paint.Name == name)
                 return paint;
@@ -34,7 +34,8 @@ public class ListRepository : IRepository
 
     public void Delete(string name)
     {
-        throw new NotImplementedException();
+        Paint paint = Read(name);
+        _allPaints.Remove(paint);
     }
 
     public List<Paint> ReadLastElements()
@@ -44,6 +45,13 @@ public class ListRepository : IRepository
 
     public List<Paint> ReadAllByName(string name)
     {
-        throw new NotImplementedException();
+        List<Paint> results = new List<Paint>();
+        foreach (var paint in _allPaints)
+        {
+            if (paint.Name.Contains(name))
+                results.Add(paint);
+        }
+
+        return results;
     }
 }
