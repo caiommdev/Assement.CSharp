@@ -35,6 +35,6 @@ public class ReadMenu : IMenu
                           $"Preço:{selectPaint.Price}\n" +
                           $"Está a venda:{selectPaint.IsOnSale}\n" +
                           $"Data de criação:{selectPaint.CreationDate}\n" +
-                          $"Idade: {selectPaint.CalculatePaintYear()}");
+                          $"Idade: {selectPaint.CalculatePaintYear()}\n");
     }
 }

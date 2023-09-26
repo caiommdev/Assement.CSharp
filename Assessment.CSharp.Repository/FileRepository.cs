@@ -1,4 +1,4 @@
-using System.Text;
+using System.Globalization;
 using System.Text.Json;
 using Assessment.CSharp.Domain;
 
@@ -6,143 +6,99 @@ namespace Assessment.CSharp.Repository;
 
 public class FileRepository : IRepository
 {
-    private string _filePath = "base-de-dados.json";
+    private string _filePath = @"/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/base-de-dados.json";
+    private List<Paint> _paints;
+    private string _fileText;
     
     public void Creat(Paint paint)
     {
-        using (FileStream fs = File.OpenWrite(_filePath))
-        {
-            string paintJson = JsonSerializer.Serialize(paint);
-            AddText(fs, paintJson);
-        }
+        _fileText = File.ReadAllText(_filePath);
+        
+        if(_fileText != "")
+            _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        
+        _paints.Add(paint);
+        _fileText = JsonSerializer.Serialize(_paints);
+        File.WriteAllText(_filePath,_fileText);
     }
-    private static void AddText(FileStream fs, string value)
-    {
-        byte[] info = new UTF8Encoding(true).GetBytes(value);
-        fs.Write(info, 0, info.Length);
-    }
-
+    
     public Paint Read(string name)
     {
-        using (FileStream fs = File.OpenRead(_filePath))
+        _fileText = File.ReadAllText(_filePath);
+        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        foreach (var paint in _paints)
         {
-            using (StreamReader reader = new StreamReader(fs))
+            if (paint.Name == name)
             {
-                while (!reader.EndOfStream)
-                {
-                    string paintJsonLine = reader.ReadLine();
-                    Paint paint = JsonSerializer.Deserialize<Paint>(paintJsonLine);
-                    if (paint.Name == name)
-                    {
-                        return paint;
-                    }
-                }
+                return paint;
             }
         }
+
         return new Paint();
     }
 
     public List<Paint> ReadLastElements()
     {
-        List<Paint> response = new List<Paint>();
-        List<string> fileLines = AllFileLines();
-        for (int i = 1; i <= fileLines.Count; i++)
+        var response = new List<Paint>();
+        
+        _fileText = File.ReadAllText(_filePath);
+        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        for (int i = _paints.Count-1; i >= 0; i--)
         {
-            if(response.Count == 5)
+            if (response.Count == 5)
                 break;
-            Paint paint = JsonSerializer.Deserialize<Paint>(fileLines[fileLines.Count - i]);
-            response.Add(paint);
+            response.Add(_paints[i]);
         }
 
         return response;
     }
 
-    private List<string> AllFileLines()
-    {
-        List<string> allLines = new List<string>();
-        using (FileStream fs = File.OpenRead(_filePath))
-        {
-            using (StreamReader reader = new StreamReader(fs))
-            {
-                while (!reader.EndOfStream)
-                    allLines.Add(reader.ReadLine());
-            }
-        }
-        return allLines;
-    }
     public List<Paint> ReadAllByName(string name)
     {
-        List<Paint> response = new List<Paint>();
-        using (FileStream fs = File.OpenRead(_filePath))
+        var response = new List<Paint>();
+        
+        _fileText = File.ReadAllText(_filePath);
+        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        foreach (var paint in _paints)
         {
-            using (StreamReader reader = new StreamReader(fs))
+            if (paint.Name.Contains(name))
             {
-                while (!reader.EndOfStream)
-                {
-                    string paintJsonLine = reader.ReadLine();
-                    Paint paint = JsonSerializer.Deserialize<Paint>(paintJsonLine);
-                    if (paint.Name.Contains(name))
-                    {
-                        response.Add(paint);
-                    }
-                }
-            } 
+                response.Add(paint);
+            }
         }
+
         return response;
     }
 
     public void Update(string oldName, string newName, string newId, string newPrice, string newSale, string newCreationDate)
     {
-        using (FileStream fs = File.Open(_filePath, FileMode.Open, FileAccess.ReadWrite))
-        {
-            using (StreamReader reader = new StreamReader(fs))
-            {
-                string allText = reader.ReadToEnd();
-                while (!reader.EndOfStream)
-                {
-                    string paintJsonLine = reader.ReadLine();
-                    Paint paint = JsonSerializer.Deserialize<Paint>(paintJsonLine);
-                    if (paint.Name == oldName)
-                    {
-                        using (StreamWriter writer = new StreamWriter(fs))
-                        {
-                            allText.Replace(paint.Name, newName)
-                                .Replace(paint.Id.ToString(), newId)
-                                .Replace(paint.Price.ToString(), newPrice)
-                                .Replace(paint.IsOnSale.ToString(), newSale)
-                                .Replace(paint.CreationDate.ToString(), newCreationDate);
-                            writer.Write(allText);
-                        }
-                        return;
-                    }
-                }
-            }    
-        }
+        _fileText = File.ReadAllText(_filePath);
+        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
         
+        Paint paint = Read(oldName);
+        _paints.Remove(paint);
+        
+        paint.Name = newName;
+        paint.Id = int.Parse(newId);
+        paint.Price = decimal.Parse(newPrice);
+        paint.IsOnSale = bool.Parse(newSale);
+        paint.CreationDate = DateTime.Parse(newCreationDate, CultureInfo.CurrentCulture);
+        
+        _paints.Add(paint);
+       
+        _fileText = JsonSerializer.Serialize(_paints);
+       File.WriteAllText(_filePath,_fileText);
     }
 
     public void Delete(string name)
     {
-        using (FileStream fs = File.Open(_filePath, FileMode.Open, FileAccess.ReadWrite))
-        {
-            using (StreamReader reader = new StreamReader(fs))
-            {
-                string allText = reader.ReadToEnd();
-                while (!reader.EndOfStream)
-                {
-                    string paintJsonLine = reader.ReadLine();
-                    Paint paint = JsonSerializer.Deserialize<Paint>(paintJsonLine);
-                    if (paint.Name == name)
-                    {
-                        using (StreamWriter writer = new StreamWriter(fs))
-                        {
-                            allText.Replace(paintJsonLine, "");
-                            writer.Write(allText);
-                        }
-                        return;
-                    }
-                }
-            }  
-        }
+        _fileText = File.ReadAllText(_filePath);
+        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        
+        Paint paint = Read(name);
+        _paints.Remove(paint);
+        
+        _fileText = JsonSerializer.Serialize(_paints);
+        File.WriteAllText(_filePath,_fileText);
     }
 }

@@ -26,12 +26,21 @@ public class UpdateMenu : IMenu
                           $"Data de criação:{paint.CreationDate}\n" +
                           $"Idade: {paint.CalculatePaintYear()}");
         
-        Console.WriteLine("Escreva as novas prorpiedades em ordem (nome até data de criação)");
-        
+        Console.WriteLine("Escreva as novas prorpiedades");
+
+        Console.Write("Nome:");
         string newName = Console.ReadLine();
+        
+        Console.Write("ID:");
         string newId = Console.ReadLine();
+        
+        Console.Write("Preço:");
         string newPrice = Console.ReadLine();
+        
+        Console.Write("Em promoção:");
         string newSale = Console.ReadLine();
+        
+        Console.Write("Data de criação:");
         string newCreationDate = Console.ReadLine();
         _repository.Update(name, newName, newId, newPrice, newSale, newCreationDate);
     }
