@@ -6,7 +6,7 @@ namespace Assessment.CSharp.Repository;
 
 public class FileRepository : IRepository
 {
-    private string _filePath = @"/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/base-de-dados.json";
+    private string _filePath = @"base-de-dados.json";
     private List<Paint> _paints = new();
     private string _fileText;
     
@@ -40,6 +40,8 @@ public class FileRepository : IRepository
         var response = new List<Paint>();
         
         GetData();
+        if (_paints.FirstOrDefault() == null)
+            return response;
         for (int i = _paints.Count-1; i >= 0; i--)
         {
             if (response.Count == 5)
@@ -100,7 +102,15 @@ public class FileRepository : IRepository
 
     private void GetData()
     {
+        if (!File.Exists(_filePath))
+        {
+            File.Create(_filePath);
+            return;
+        }
+        
         _fileText = File.ReadAllText(_filePath);
+        if(_fileText == "")
+            return;
         _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
     }
 

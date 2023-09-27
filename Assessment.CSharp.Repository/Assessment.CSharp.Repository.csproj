@@ -10,4 +10,8 @@
       <ProjectReference Include="..\Assessment.CSharp.Domain\Assessment.CSharp.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="base-de-dados.json" />
+    </ItemGroup>
+
 </Project>
