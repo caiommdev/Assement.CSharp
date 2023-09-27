@@ -18,6 +18,11 @@ public class ReadMenu : IMenu
         Console.WriteLine("Informe o nome da pintura");
         string name = Console.ReadLine();
         List<Paint> paints = _repository.ReadAllByName(name);
+        if (paints.FirstOrDefault() == null)
+        {
+            Console.WriteLine("Pintura não encontrada\n");
+            return;
+        }
 
         int index = 0;
         foreach (var paint in paints)
@@ -26,7 +31,7 @@ public class ReadMenu : IMenu
             index++;
         }
         
-        Console.WriteLine("Escolha uma das opções");
+        Console.WriteLine("========Escolha uma das opções========");
         int op = int.Parse(Console.ReadLine());
 
         Paint selectPaint = paints[op];

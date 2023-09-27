@@ -7,7 +7,7 @@ namespace Assessment.CSharp.Repository;
 public class FileRepository : IRepository
 {
     private string _filePath = @"/Users/caiomotamarinho/RiderProjects/Assement.CSharp/Assessment.CSharp.Repository/base-de-dados.json";
-    private List<Paint> _paints;
+    private List<Paint> _paints = new();
     private string _fileText;
     
     public void Creat(Paint paint)
@@ -18,14 +18,12 @@ public class FileRepository : IRepository
             _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
         
         _paints.Add(paint);
-        _fileText = JsonSerializer.Serialize(_paints);
-        File.WriteAllText(_filePath,_fileText);
+        SaveData();
     }
     
     public Paint Read(string name)
     {
-        _fileText = File.ReadAllText(_filePath);
-        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        GetData();
         foreach (var paint in _paints)
         {
             if (paint.Name == name)
@@ -41,8 +39,7 @@ public class FileRepository : IRepository
     {
         var response = new List<Paint>();
         
-        _fileText = File.ReadAllText(_filePath);
-        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        GetData();
         for (int i = _paints.Count-1; i >= 0; i--)
         {
             if (response.Count == 5)
@@ -57,8 +54,7 @@ public class FileRepository : IRepository
     {
         var response = new List<Paint>();
         
-        _fileText = File.ReadAllText(_filePath);
-        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        GetData();
         foreach (var paint in _paints)
         {
             if (paint.Name.Contains(name))
@@ -72,8 +68,7 @@ public class FileRepository : IRepository
 
     public void Update(string oldName, string newName, string newId, string newPrice, string newSale, string newCreationDate)
     {
-        _fileText = File.ReadAllText(_filePath);
-        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        GetData();
         
         Paint paint = Read(oldName);
         _paints.Remove(paint);
@@ -81,24 +76,38 @@ public class FileRepository : IRepository
         paint.Name = newName;
         paint.Id = int.Parse(newId);
         paint.Price = decimal.Parse(newPrice);
-        paint.IsOnSale = bool.Parse(newSale);
+        
+        paint.IsOnSale = false;
+        if (newSale=="sim")
+            paint.IsOnSale = true;
+        
         paint.CreationDate = DateTime.Parse(newCreationDate, CultureInfo.CurrentCulture);
         
         _paints.Add(paint);
        
-        _fileText = JsonSerializer.Serialize(_paints);
-       File.WriteAllText(_filePath,_fileText);
+        SaveData();
     }
 
     public void Delete(string name)
     {
-        _fileText = File.ReadAllText(_filePath);
-        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+        GetData();
         
         Paint paint = Read(name);
         _paints.Remove(paint);
         
+        SaveData();
+    }
+
+    private void GetData()
+    {
+        _fileText = File.ReadAllText(_filePath);
+        _paints = JsonSerializer.Deserialize<List<Paint>>(_fileText);
+    }
+
+    private void SaveData()
+    {
         _fileText = JsonSerializer.Serialize(_paints);
         File.WriteAllText(_filePath,_fileText);
+        
     }
 }

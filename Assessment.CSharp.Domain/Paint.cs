@@ -16,7 +16,6 @@ public class Paint
 
         if (DateTime.Now.Day < CreationDate.Day && DateTime.Now.Month < CreationDate.Month)
             year--;
-
         return year;
     }
 
@@ -49,7 +48,7 @@ public class Paint
     {
         Console.WriteLine("Informe o preço da Pintura");
         string price = Console.ReadLine();
-        Price = int.Parse(price);
+        Price = decimal.Parse(price);
     }
     
     public void RegisCreationDate()
@@ -57,6 +56,5 @@ public class Paint
         Console.WriteLine("Informe a data de criação da Pintura");
         string date = Console.ReadLine();
         CreationDate = DateTime.Parse(date, CultureInfo.CurrentCulture).Date;
-        //ddmmYYYY dd-mm-YYYY dd/mm/YYYY
     }
 }

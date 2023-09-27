@@ -23,7 +23,7 @@ public class DeleteMenu : IMenu
                           $"Preço:{paint.Price}\n" +
                           $"Está a venda:{paint.IsOnSale}\n" +
                           $"Data de criação:{paint.CreationDate}\n" +
-                          $"Idade: {paint.CalculatePaintYear()}");
+                          $"Idade: {paint.CalculatePaintYear()}\n");
         
         Console.WriteLine("Você gostaria mesmo de deletar essa pintura? S/N");
         string response = Console.ReadLine();

@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <Compile Remove="PaintJson.cs" />
+      <Compile Remove="Statica.cs" />
     </ItemGroup>
 
 </Project>

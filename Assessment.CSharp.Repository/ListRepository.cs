@@ -28,7 +28,11 @@ public class ListRepository : IRepository
         paint.Name = newName;
         paint.Id = int.Parse(newId);
         paint.Price = decimal.Parse(newPrice);
-        paint.IsOnSale = bool.Parse(newSale);
+        
+        paint.IsOnSale = false;
+        if (newSale=="sim")
+            paint.IsOnSale = true;
+        
         paint.CreationDate = DateTime.Parse(newCreationDate, CultureInfo.CurrentCulture);
     }
 
